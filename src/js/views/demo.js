@@ -11,24 +11,24 @@ export const Demo = () => {
 	return (
 		<div className="container">
 			<ul className="list-group">
-				{store.demo.map((item, index) => {
+				{store.readers.map((item, index) => {
 					return (
 						<li
 							key={index}
 							className="list-group-item d-flex justify-content-between"
-							style={{ background: item.background }}>
-							<Link to={"/single/" + index}>
-								<span>Link to: {item.title}</span>
-							</Link>
-							{// Conditional render example
-							// Check to see if the background is orange, if so, display the message
-							item.background === "orange" ? (
-								<p style={{ color: item.initial }}>
-									Check store/flux.js scroll to the actions to see the code
-								</p>
-							) : null}
-							<button className="btn btn-success" onClick={() => actions.changeColor(index, "orange")}>
-								Change Color
+							>
+							<p>
+								 {item.name}
+								 <br />
+								 {item.email}
+								 <br />
+								 {item.id}
+							</p>
+							<Link to={"/formulario/"+item.id} >
+									<button className="btn btn-light"><i className="fas fa-pencil-alt"></i></button>
+								</Link> 
+							<button className="btn btn-danger" onClick={() => actions.removeReader(item.id)}>
+								<i class="fas fa-trash-alt"></i>
 							</button>
 						</li>
 					);
@@ -39,5 +39,4 @@ export const Demo = () => {
 				<button className="btn btn-primary">Back home</button>
 			</Link>
 		</div>
-	);
-};
+	);};
